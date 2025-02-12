@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace BoerderijApp_BL.Comparers
 {
-    public class EigendomComparer
+    public class EigendomComparer : IComparer<string>
     {
-
+        public int Compare(string? x, string? y)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

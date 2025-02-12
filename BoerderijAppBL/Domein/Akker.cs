@@ -12,11 +12,15 @@ namespace BoerderijApp_BL.Domein
         public Akker(string naam, double kost, double oppervlakteM2, GewasEnum gewas)
         : base(naam, kost)
         {
+            if (oppervlakteM2 <= 0)
+            {
+                throw new ArgumentException("Akker - Oppervlakte moet positief zijn");
+            }
             OppervlakteM2 = oppervlakteM2;
             Gewas = gewas;
         }
 
-        public double OppervlakteM2 { get; init; } //TODO: check op strikt positief
+        public double OppervlakteM2 { get; init; }
         public GewasEnum Gewas { get; set; }
 
         public override double BerekenOpbrengst()

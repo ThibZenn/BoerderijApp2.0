@@ -15,7 +15,7 @@
 
         public override string ToString()
         {
-            return $"{typeof(Eigendom)} \" {Naam} \" met kost {Kost}";
+            return $"{GetType().Name} \"{Naam}\" met kost {Kost}.";
         }
     }
 }

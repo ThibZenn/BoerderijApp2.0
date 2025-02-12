@@ -25,19 +25,19 @@ namespace BoerderijApp_BL.Domein
 
         public override double BerekenLoonKost()
         {
-            return BasisLoon * 1.45;
+            return Math.Round((BasisLoon * 1.45),2);
         }
 
         private string GenereerWerknemersNummer(string naam)
         {
             Random rnd = new Random();
 
-            return $"{naam.Substring(0,3)}{DateTime.Now.Date}{rnd.Next(100,1000)}";
+            return $"{naam.Substring(0,3)}{DateTime.Now.ToString("yyyyMMdd")}{rnd.Next(100,1000)}";
         }
 
         public override string ToString() 
         {
-            return $" {typeof(Persoon)} {Naam} ({GeboorteDatum}) met nummer {WerknemersNummer} kost {BerekenLoonKost()}.";
+            return $"{GetType().Name} {Naam} ({GeboorteDatum.ToShortDateString()}) met nummer {WerknemersNummer} kost {BerekenLoonKost()}.";
         }
     }
 }

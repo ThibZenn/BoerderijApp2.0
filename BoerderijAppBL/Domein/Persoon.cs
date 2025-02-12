@@ -2,11 +2,15 @@
 {
     public abstract class Persoon
     {
-        private string? _naam; //waarom een ? als het niet leeg mag zijn?
+        private string? _naam;
 
-        protected Persoon(string naam, DateTime geboorteDatum)
+        public Persoon(string naam, DateTime geboorteDatum)
         {
             Naam = naam;
+            if (geboorteDatum > (DateTime.Now.AddYears(-18)))
+            {
+                throw new ArgumentException("Persoon - de persoon is jonger dan 18 jaar.");
+            }
             GeboorteDatum = geboorteDatum;
         }
 
@@ -19,11 +23,11 @@
                 _naam = value;
             }
         }
-        public DateTime GeboorteDatum { get; init; } //TODO: minstens 18 jaar oud
+        public DateTime GeboorteDatum { get; init; }
 
         public override string ToString()
         {
-            return $" {typeof(Persoon)} {Naam} ({GeboorteDatum})";
+            return $" {GetType().Name} {Naam} ({GeboorteDatum.ToShortDateString()})";
         }
 
         public int CompareTo(object obj)

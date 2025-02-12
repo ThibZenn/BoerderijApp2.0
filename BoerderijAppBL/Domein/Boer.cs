@@ -16,14 +16,10 @@ namespace BoerderijApp_BL.Domein
         }
 
         public double AandeelInDeOnderneming { get; set; }
-        public override double BerekenLoonKost()
-        {
-            throw new NotImplementedException();
-        }
 
         public override string ToString()
         {
-            return base.ToString(); // TODO: Afwerken
+            return $"{GetType().Name} {Naam} ({GeboorteDatum.ToShortDateString()}) bezit {AandeelInDeOnderneming:0.00}% van de onderneming.";
         }
     }
 }
